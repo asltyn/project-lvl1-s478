@@ -1,25 +1,27 @@
 {
   "name": "brain-games-hex",
-  "version": "1.2.2",
-  "description": "",
-  "main": "index.js",
+  "version": "1.2.3",
+  "description": "Console game",
+  "keywords": ["Brain-games", "hexlet"],
+  "main": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
     "prepublishOnly": "npm run build"
   },
-  "author": "",
+  "author": "asltyn",
   "license": "ISC",
   "dependencies": {
     "@babel/cli": "^7.4.3",
     "@babel/core": "^7.4.3",
     "@babel/node": "^7.2.2",
-    "@babel/preset-env": "^7.4.3"
+    "@babel/preset-env": "^7.4.3",
+    "readline-sync": "^1.4.9"
   },
   "bin": {
     "brain-games": "dist/bin/brain-games.js"
   },
   "files": [
-   "dist"   	   
+    "dist"
   ]
 }
