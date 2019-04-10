@@ -8,7 +8,4 @@ publish:
 	npm publish
 
 lint:
-	node_modules/.bin/eslint
-
-lint:
 	npx eslint .

@@ -1,6 +1,6 @@
 {
   "name": "brain-games-hex",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Console game",
   "keywords": [
     "Brain-games",
@@ -22,6 +22,7 @@
     "readline-sync": "^1.4.9"
   },
   "bin": {
+    "brain-even": "dist/bin/brain-even.js",
     "brain-games": "dist/bin/brain-games.js"
   },
   "files": [
