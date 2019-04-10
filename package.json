@@ -2,7 +2,10 @@
   "name": "brain-games-hex",
   "version": "1.2.3",
   "description": "Console game",
-  "keywords": ["Brain-games", "hexlet"],
+  "keywords": [
+    "Brain-games",
+    "hexlet"
+  ],
   "main": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -23,5 +26,11 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0"
+  }
 }
