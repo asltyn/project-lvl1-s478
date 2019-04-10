@@ -19,11 +19,12 @@
     "@babel/core": "^7.4.3",
     "@babel/node": "^7.2.2",
     "@babel/preset-env": "^7.4.3",
+    "hexlet-pairs": "^1.0.8",
     "readline-sync": "^1.4.9"
   },
   "bin": {
     "brain-even": "dist/bin/brain-even.js",
-    "brain-games": "dist/bin/brain-games.js"
+    "brain-calc": "dist/bin/brain-calc.js"
   },
   "files": [
     "dist"
