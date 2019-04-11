@@ -1,40 +1,30 @@
-import { cons } from 'hexlet-pairs';
+import { cons, car, cdr } from 'hexlet-pairs';
 import run from '../game';
+import getRandomFromRange from '../random';
 
-const getQuestion = (num1, num2, oper) => {
-  switch (oper) {
-    case 1: return `${num1} + ${num2}`;
-    case 2: return `${num1} - ${num2}`;
-    case 3: return `${num1} * ${num2}`;
-    default: return '';
-  }
-};
-
-const getAnswer = (num1, num2, oper) => {
-  switch (oper) {
-    case 1: return (num1 + num2).toString();
-    case 2: return (num1 - num2).toString();
-    case 3: return (num1 * num2).toString();
-    default: return '';
-  }
+const functions = {
+  1: cons((x, y) => `${x} + ${y}`, (x, y) => x + y),
+  2: cons((x, y) => `${x} - ${y}`, (x, y) => x - y),
+  3: cons((x, y) => `${x} * ${y}`, (x, y) => x * y),
 };
 
 const getQuestionsAndAnswers = (numberOfQuestions) => {
-  const iter = (n, questions, answers) => {
-    if (n < 1) {
+  const iter = (i, questions, answers) => {
+    if (i < 1) {
       return cons(questions, answers);
     }
-    const randomNumber1 = Math.floor(Math.random() * 100);
-    const randomNumber2 = Math.floor(Math.random() * 100);
-    const operationNumber = Math.floor(Math.random() * 3) + 1;
-    const question = getQuestion(randomNumber1, randomNumber2, operationNumber);
-    const answer = getAnswer(randomNumber1, randomNumber2, operationNumber);
-    return iter(n - 1, cons(question, questions), cons(answer, answers));
+    const randomNumber1 = getRandomFromRange(0, 100);
+    const randomNumber2 = getRandomFromRange(0, 100);
+    const key = getRandomFromRange(1, 3);
+    const question = car(functions[key])(randomNumber1, randomNumber2);
+    const answer = cdr(functions[key])(randomNumber1, randomNumber2);
+    return iter(i - 1, cons(question, questions), cons(answer.toString(), answers));
   };
   return iter(numberOfQuestions);
 };
 
 export default () => {
   const name = 'What is the result of the expression?';
-  run(name, getQuestionsAndAnswers(3));
+  const numberOfQuestions = 3;
+  run(name, getQuestionsAndAnswers(numberOfQuestions));
 };

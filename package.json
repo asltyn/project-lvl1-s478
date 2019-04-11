@@ -1,6 +1,6 @@
 {
   "name": "brain-games-hex",
-  "version": "1.2.5",
+  "version": "1.2.8",
   "description": "Console game",
   "keywords": [
     "Brain-games",
@@ -15,21 +15,22 @@
   "author": "asltyn",
   "license": "ISC",
   "dependencies": {
-    "@babel/cli": "^7.4.3",
-    "@babel/core": "^7.4.3",
-    "@babel/node": "^7.2.2",
-    "@babel/preset-env": "^7.4.3",
     "hexlet-pairs": "^1.0.8",
     "readline-sync": "^1.4.9"
   },
   "bin": {
     "brain-even": "dist/bin/brain-even.js",
-    "brain-calc": "dist/bin/brain-calc.js"
+    "brain-calc": "dist/bin/brain-calc.js",
+    "brain-gcd": "dist/bin/brain-gcd.js"
   },
   "files": [
     "dist"
   ],
   "devDependencies": {
+    "@babel/cli": "^7.4.3",
+    "@babel/core": "^7.4.3",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.4.3",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
