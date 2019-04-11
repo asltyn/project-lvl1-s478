@@ -1,5 +1,5 @@
 import readlineSync from 'readline-sync';
-import { cons, car, cdr, toString } from 'hexlet-pairs';
+import { car, cdr } from 'hexlet-pairs';
 
 export default (gameName, questionsAndAnswers) => {
   console.log('Welcome to the Brain Games!');
@@ -16,14 +16,11 @@ export default (gameName, questionsAndAnswers) => {
     if (playerAnswer === car(answers)) {
       console.log('Correct!');
     } else {
-       console.log(`'${playerAnswer}' is wrong answer ;(. Correct answer was ${car(answers)}.`);
-       return console.log(`Let's try again, ${playerName}!`);
+      console.log(`'${playerAnswer}' is wrong answer ;(. Correct answer was ${car(answers)}.`);
+      return console.log(`Let's try again, ${playerName}!`);
     }
     return iter(counter - 1, cdr(questions), cdr(answers));
-  }
+  };
 
   iter(3, car(questionsAndAnswers), cdr(questionsAndAnswers));
-}
-
-
-
+};
