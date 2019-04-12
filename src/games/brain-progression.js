@@ -1,6 +1,6 @@
 import { cons } from 'hexlet-pairs';
 import { run, roundNumbers } from '../game';
-import getRandomFromRange from '../random';
+import getRandomInt from '../random';
 
 const minFirstElemValue = 1;
 const maxFirstElemValue = 10;
@@ -24,17 +24,17 @@ const getQuestionsAndAnswers = (numberOfQuestions) => {
     if (i < 1) {
       return cons(questions, answers);
     }
-    const firstElement = getRandomFromRange(minFirstElemValue, maxFirstElemValue);
-    const step = getRandomFromRange(minStep, maxStep);
-    const hiddenIndex = getRandomFromRange(minHiddenIndex, maxHiddenIndex);
+    const firstElement = getRandomInt(minFirstElemValue, maxFirstElemValue);
+    const step = getRandomInt(minStep, maxStep);
+    const hiddenIndex = getRandomInt(minHiddenIndex, maxHiddenIndex);
     const question = getQuestionString(firstElement, step, hiddenIndex);
     const answer = `${firstElement + step * (hiddenIndex - 1)}`;
     return iter(i - 1, cons(question, questions), cons(answer, answers));
   };
-  return iter(numberOfQuestions);
+  return iter(numberOfQuestions,'','');
 };
 
 export default () => {
-  const name = 'What number is missing in the progression?';
-  run(name, getQuestionsAndAnswers(roundNumbers));
+  const gameName = 'What number is missing in the progression?';
+  run(gameName, getQuestionsAndAnswers(roundNumbers));
 };

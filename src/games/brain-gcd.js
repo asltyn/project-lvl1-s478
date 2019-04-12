@@ -1,6 +1,6 @@
 import { cons } from 'hexlet-pairs';
 import { run, roundNumbers } from '../game';
-import getRandomFromRange from '../random';
+import getRandomInt from '../random';
 
 const minArgumentValue = 1;
 const maxArgumentValue = 100;
@@ -17,16 +17,16 @@ const getQuestionsAndAnswers = (numberOfQuestions) => {
     if (i < 1) {
       return cons(questions, answers);
     }
-    const firstArgument = getRandomFromRange(minArgumentValue, maxArgumentValue);
-    const secondArgument = getRandomFromRange(minArgumentValue, maxArgumentValue);
+    const firstArgument = getRandomInt(minArgumentValue, maxArgumentValue);
+    const secondArgument = getRandomInt(minArgumentValue, maxArgumentValue);
     const question = `${firstArgument} ${secondArgument}`;
     const answer = `${findGcd(firstArgument, secondArgument)}`;
     return iter(i - 1, cons(question, questions), cons(answer, answers));
   };
-  return iter(numberOfQuestions);
+  return iter(numberOfQuestions,'','');
 };
 
 export default () => {
-  const name = 'Find the greatest common divisor of given numbers';
-  run(name, getQuestionsAndAnswers(roundNumbers));
+  const gameName = 'Find the greatest common divisor of given numbers';
+  run(gameName, getQuestionsAndAnswers(roundNumbers));
 };

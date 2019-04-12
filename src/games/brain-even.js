@@ -1,6 +1,6 @@
 import { cons } from 'hexlet-pairs';
 import { run, roundNumbers } from '../game';
-import getRandomFromRange from '../random';
+import getRandomInt from '../random';
 
 const minQuestionValue = 0;
 const maxQuestionValue = 100;
@@ -12,15 +12,14 @@ const getQuestionsAndAnswers = (numberOfQuestions) => {
     if (i < 1) {
       return cons(questions, answers);
     }
-    const question = `${getRandomFromRange(minQuestionValue, maxQuestionValue)}`;
+    const question = `${getRandomInt(minQuestionValue, maxQuestionValue)}`;
     const answer = isEven(question) ? 'yes' : 'no';
     return iter(i - 1, cons(question, questions), cons(answer, answers));
   };
-  return iter(numberOfQuestions);
+  return iter(numberOfQuestions,'','');
 };
 
-
 export default () => {
-  const name = 'Answer "yes" if answer even otherwise answer "no".';
-  run(name, getQuestionsAndAnswers(roundNumbers));
+  const gameName = 'Answer "yes" if answer even otherwise answer "no".';
+  run(gameName, getQuestionsAndAnswers(roundNumbers));
 };
