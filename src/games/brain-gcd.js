@@ -23,10 +23,11 @@ const getQuestionsAndAnswers = (numberOfQuestions) => {
     const answer = `${findGcd(firstArgument, secondArgument)}`;
     return iter(i - 1, cons(question, questions), cons(answer, answers));
   };
-  return iter(numberOfQuestions,'','');
+  return iter(numberOfQuestions, '', '');
 };
 
 export default () => {
-  const gameName = 'Find the greatest common divisor of given numbers';
-  run(gameName, getQuestionsAndAnswers(roundNumbers));
+  const gameDescription = 'Find the greatest common divisor of given numbers';
+  const questionsAndAnswers = getQuestionsAndAnswers(roundNumbers);
+  run(gameDescription, questionsAndAnswers);
 };

@@ -25,10 +25,11 @@ const getQuestionsAndAnswers = (numberOfQuestions) => {
     const answer = `${functions[operator](firstArgument, secondArgument)}`;
     return iter(i - 1, cons(question, questions), cons(answer, answers));
   };
-  return iter(numberOfQuestions,'','');
+  return iter(numberOfQuestions, '', '');
 };
 
 export default () => {
-  const gameName = 'What is the result of the expression?';
-  run(gameName, getQuestionsAndAnswers(roundNumbers));
+  const gameDescription = 'What is the result of the expression?';
+  const questionsAndAnswers = getQuestionsAndAnswers(roundNumbers);
+  run(gameDescription, questionsAndAnswers);
 };

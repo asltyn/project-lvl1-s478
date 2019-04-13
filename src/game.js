@@ -4,7 +4,7 @@ import { car, cdr } from 'hexlet-pairs';
 export const roundNumbers = 3;
 
 export const run = (gameName, questionsAndAnswers) => {
-  console.log(`Welcome to the Brain Games!`);
+  console.log('Welcome to the Brain Games!');
   console.log(`${gameName}\n`);
 
   const playerName = readlineSync.question('May I have your name? ');
@@ -12,7 +12,8 @@ export const run = (gameName, questionsAndAnswers) => {
 
   const iter = (counter, questions, answers) => {
     if (counter < 1) {
-      return true;
+      console.log(`Congratulations, ${playerName}!`);
+      return;
     }
     const currentQuestion = car(questions);
     const rightAnswer = car(answers);
@@ -22,12 +23,13 @@ export const run = (gameName, questionsAndAnswers) => {
       console.log('Correct!');
     } else {
       console.log(`'${playerAnswer}' is wrong answer ;(. Correct answer was ${rightAnswer}.`);
-      return false;
+      console.log(`Let's try again, ${playerName}!`);
+      return;
     }
-    return iter(counter - 1, cdr(questions), cdr(answers));
+    iter(counter - 1, cdr(questions), cdr(answers));
   };
 
-  const isWin = iter(roundNumbers, car(questionsAndAnswers), cdr(questionsAndAnswers));
-  const gameOver = isWin ? `Congratulations, ${playerName}!` : `Let's try again, ${playerName}!`;
-  console.log(gameOver);
+  const listOfQuestions = car(questionsAndAnswers);
+  const listOfAnswers = cdr(questionsAndAnswers);
+  iter(roundNumbers, listOfQuestions, listOfAnswers);
 };

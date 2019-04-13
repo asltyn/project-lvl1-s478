@@ -16,10 +16,11 @@ const getQuestionsAndAnswers = (numberOfQuestions) => {
     const answer = isEven(question) ? 'yes' : 'no';
     return iter(i - 1, cons(question, questions), cons(answer, answers));
   };
-  return iter(numberOfQuestions,'','');
+  return iter(numberOfQuestions, '', '');
 };
 
 export default () => {
-  const gameName = 'Answer "yes" if answer even otherwise answer "no".';
-  run(gameName, getQuestionsAndAnswers(roundNumbers));
+  const gameDescription = 'Answer "yes" if answer even otherwise answer "no".';
+  const questionsAndAnswers = getQuestionsAndAnswers(roundNumbers);
+  run(gameDescription, questionsAndAnswers);
 };
