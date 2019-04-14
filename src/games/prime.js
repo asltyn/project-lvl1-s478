@@ -4,11 +4,12 @@ import getRandomInt from '../random';
 
 const isPrime = (number) => {
   if (number < 2) return false;
+  const maxCheck = Math.floor(Math.sqrt(number));
   const iter = (counter) => {
-    if (counter === 1) return true;
-    return number % counter === 0 ? false : iter(counter - 1);
+    if (counter > maxCheck) return true;
+    return number % counter === 0 ? false : iter(counter + 1);
   };
-  return iter(Math.floor(Math.sqrt(number)));
+  return iter(2);
 };
 
 const getQuestionsAndAnswers = (numberOfQuestions) => {
