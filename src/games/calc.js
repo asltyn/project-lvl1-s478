@@ -2,8 +2,6 @@ import { cons } from 'hexlet-pairs';
 import run from '../game';
 import getRandomInt from '../random';
 
-const operatorsAmount = 3;
-
 const functions = {
   '+': (x, y) => x + y,
   '-': (x, y) => x - y,
@@ -17,8 +15,10 @@ const getQuestionsAndAnswers = (numberOfQuestions) => {
     }
     const firstArgument = getRandomInt(0, 100);
     const secondArgument = getRandomInt(0, 100);
+    const arrayOfOperators = Object.keys(functions);
+    const operatorsAmount = arrayOfOperators.length;
     const numberOfOperator = getRandomInt(0, operatorsAmount - 1);
-    const operator = Object.keys(functions)[numberOfOperator];
+    const operator = arrayOfOperators[numberOfOperator];
     const question = `${firstArgument} ${operator} ${secondArgument}`;
     const answer = `${functions[operator](firstArgument, secondArgument)}`;
     return iter(i - 1, cons(question, questions), cons(answer, answers));

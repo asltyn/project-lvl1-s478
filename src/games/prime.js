@@ -8,7 +8,7 @@ const isPrime = (number) => {
     if (counter === 1) return true;
     return number % counter === 0 ? false : iter(counter - 1);
   };
-  return iter(number - 1);
+  return iter(Math.floor(Math.sqrt(number)));
 };
 
 const getQuestionsAndAnswers = (numberOfQuestions) => {
