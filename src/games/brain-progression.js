@@ -1,9 +1,10 @@
 import { cons } from 'hexlet-pairs';
-import { run, roundNumbers } from '../game';
+import run from '../game';
 import getRandomInt from '../random';
 
+const ElementsAmount = 10;
+
 const getQuestion = (firstElement, step, hiddenElementIndex) => {
-  const ElementsAmount = 10;
   const iter = (index, acc) => {
     if (index > ElementsAmount) return acc;
     if (index === hiddenElementIndex) return iter(index + 1, `${acc} ${'..'}`);
@@ -29,6 +30,5 @@ const getQuestionsAndAnswers = (numberOfQuestions) => {
 
 export default () => {
   const gameDescription = 'What number is missing in the progression?';
-  const questionsAndAnswers = getQuestionsAndAnswers(roundNumbers);
-  run(gameDescription, questionsAndAnswers);
+  run(gameDescription, getQuestionsAndAnswers);
 };

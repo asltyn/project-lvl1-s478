@@ -1,8 +1,9 @@
 import { cons } from 'hexlet-pairs';
-import { run, roundNumbers } from '../game';
+import run from '../game';
 import getRandomInt from '../random';
 
 const isPrime = (number) => {
+  if (number < 2) return false;
   const iter = (counter) => {
     if (counter === 1) return true;
     return number % counter === 0 ? false : iter(counter - 1);
@@ -15,7 +16,7 @@ const getQuestionsAndAnswers = (numberOfQuestions) => {
     if (i < 1) {
       return cons(questions, answers);
     }
-    const question = `${getRandomInt(2, 100)}`;
+    const question = getRandomInt(2, 100);
     const answer = isPrime(question) ? 'yes' : 'no';
     return iter(i - 1, cons(question, questions), cons(answer, answers));
   };
@@ -24,6 +25,5 @@ const getQuestionsAndAnswers = (numberOfQuestions) => {
 
 export default () => {
   const gameDescription = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-  const questionsAndAnswers = getQuestionsAndAnswers(roundNumbers);
-  run(gameDescription, questionsAndAnswers);
+  run(gameDescription, getQuestionsAndAnswers);
 };

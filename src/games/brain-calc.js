@@ -1,9 +1,7 @@
 import { cons } from 'hexlet-pairs';
-import { run, roundNumbers } from '../game';
+import run from '../game';
 import getRandomInt from '../random';
 
-const minArgumentValue = 0;
-const maxArgumentValue = 100;
 const operatorsAmount = 3;
 
 const functions = {
@@ -17,8 +15,8 @@ const getQuestionsAndAnswers = (numberOfQuestions) => {
     if (i < 1) {
       return cons(questions, answers);
     }
-    const firstArgument = getRandomInt(minArgumentValue, maxArgumentValue);
-    const secondArgument = getRandomInt(minArgumentValue, maxArgumentValue);
+    const firstArgument = getRandomInt(0, 100);
+    const secondArgument = getRandomInt(0, 100);
     const numberOfOperator = getRandomInt(0, operatorsAmount - 1);
     const operator = Object.keys(functions)[numberOfOperator];
     const question = `${firstArgument} ${operator} ${secondArgument}`;
@@ -30,6 +28,5 @@ const getQuestionsAndAnswers = (numberOfQuestions) => {
 
 export default () => {
   const gameDescription = 'What is the result of the expression?';
-  const questionsAndAnswers = getQuestionsAndAnswers(roundNumbers);
-  run(gameDescription, questionsAndAnswers);
+  run(gameDescription, getQuestionsAndAnswers);
 };
